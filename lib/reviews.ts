@@ -12,14 +12,14 @@ export const REVIEWS: Review[] = [
   {
     id: "r2",
     author: "Алина",
-    product: "Пепельные джинсы",
+    product: "Cursed by hell jeans",
     text: "Сидят идеально, ткань плотная, цвет вживую ещё лучше, чем на фото. Шили под мои мерки — попали точно.",
     photo: "/reviews/r2.svg",
   },
   {
     id: "r3",
     author: "Кирилл",
-    product: "Дымчатые джинсы",
+    product: "Angel tears jeans",
     text: "Заказывал из другого города, всё объяснили по меркам, отправили быстро. Носятся уже месяц — как новые.",
     photo: "/reviews/r3.svg",
   },

@@ -1,5 +1,6 @@
 /** Availability indicator. Shape (filled dot vs hollow ring) differs alongside
- *  the label text, so the meaning never depends on color alone. */
+ *  the label text, so the meaning never depends on color alone. Every piece is
+ *  one-of-a-kind, so a sold-out item reads as "Продано", not "out of stock". */
 export function StockBadge({
   inStock,
   className = "",
@@ -20,7 +21,7 @@ export function StockBadge({
         }
       />
       <span className={inStock ? "text-secondary" : "text-muted"}>
-        {inStock ? "В наличии" : "Нет в наличии"}
+        {inStock ? "В наличии" : "Продано"}
       </span>
     </span>
   );

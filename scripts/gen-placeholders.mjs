@@ -36,11 +36,11 @@ function frame({ w, h, top, bottom, name, label, accent = "#B0503F" }) {
 }
 
 // slug -> tonal pair (top/bottom). Names match lib/products.ts.
+// Note: angel-tears-jeans / cursed-by-hell-jeans use their own fringe
+// placeholders from gen-catalog-placeholders.mjs (real photos pending).
 const PRODUCTS = [
   { slug: "krovavye-dzhinsy", name: "Кровавые джинсы", count: 3, top: "#262019", bottom: "#15110d" },
-  { slug: "pepelnye-dzhinsy", name: "Пепельные джинсы", count: 2, top: "#2a2b28", bottom: "#171814" },
   { slug: "grafitovye-dzhinsy", name: "Графитовые джинсы", count: 2, top: "#212421", bottom: "#101210" },
-  { slug: "dymchatye-dzhinsy", name: "Дымчатые джинсы", count: 2, top: "#30312d", bottom: "#1c1d19" },
   { slug: "ugolnye-dzhinsy", name: "Угольные джинсы", count: 2, top: "#1a1b18", bottom: "#0c0d0b" },
 ];
 
@@ -62,24 +62,6 @@ for (const p of PRODUCTS) {
     );
     made++;
   }
-}
-
-// Hero — taller crop with the same language.
-{
-  const out = join(PUBLIC, "hero.svg");
-  ensure(out);
-  writeFileSync(
-    out,
-    frame({
-      w: 1200,
-      h: 1500,
-      top: "#23201b",
-      bottom: "#0d0c0a",
-      name: "Кровавые джинсы",
-      label: "HERO",
-    })
-  );
-  made++;
 }
 
 // Review avatars — square, with the author initial.

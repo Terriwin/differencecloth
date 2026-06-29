@@ -32,3 +32,6 @@ next-env.d.ts
 
 # local tooling
 .claude
+
+# source photos staging (working copies live in /public/catalog)
+assets
