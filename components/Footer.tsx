@@ -1,0 +1,73 @@
+import Link from "next/link";
+import { NAV, SITE, SOCIALS } from "@/lib/site";
+import { Logo } from "./Logo";
+import { SOCIAL_ICONS, MapPinIcon } from "./icons";
+
+export function Footer() {
+  const year = new Date().getFullYear();
+
+  return (
+    <footer className="border-t border-line bg-surface">
+      <div className="mx-auto max-w-content px-5 py-14 md:px-8 md:py-16 lg:px-12">
+        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
+          <div>
+            <Logo />
+            <p className="mt-5 max-w-xs text-sm leading-relaxed text-secondary">
+              {SITE.heroSlogan}
+            </p>
+            <p className="mt-4 inline-flex items-center gap-2 text-sm text-muted">
+              <MapPinIcon className="h-4 w-4" />
+              {SITE.city}
+            </p>
+          </div>
+
+          <nav aria-label="Навигация в подвале">
+            <h2 className="label text-[0.7rem] text-muted">Разделы</h2>
+            <ul className="mt-4 space-y-2.5">
+              {NAV.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="text-sm text-secondary transition-colors duration-200 hover:text-ink"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div>
+            <h2 className="label text-[0.7rem] text-muted">Соцсети</h2>
+            <ul className="mt-4 space-y-2.5">
+              {SOCIALS.map((s) => {
+                const Icon = SOCIAL_ICONS[s.kind];
+                return (
+                  <li key={s.kind}>
+                    <a
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-center gap-2.5 text-sm text-secondary transition-colors duration-200 hover:text-ink"
+                    >
+                      <Icon className="h-4 w-4 text-muted transition-colors duration-200 group-hover:text-ink" />
+                      <span>{s.label}</span>
+                      <span className="text-muted">{s.handle}</span>
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-14 flex flex-col gap-2 border-t border-line pt-6 text-xs text-muted md:flex-row md:items-center md:justify-between">
+          <p>
+            © {year} {SITE.brand}. Кастомная одежда ручной работы.
+          </p>
+          <p>Оплата и заказ — через Telegram.</p>
+        </div>
+      </div>
+    </footer>
+  );
+}

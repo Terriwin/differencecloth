@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================================
+   DIFFERENCE — design tokens (source of truth)
+   Colors are stored as space-separated RGB channels so Tailwind can apply
+   opacity modifiers via rgb(var(--token) / <alpha>). Re-skin the whole site by
+   editing only this block. See DESIGN.md for the rationale behind each value.
+   ========================================================================== */
+:root {
+  /* Surfaces — ashen, near-black with a faint warm-neutral cast (burned wood) */
+  --c-canvas: 14 15 14; /* #0E0F0E page background */
+  --c-surface: 21 22 20; /* #151614 cards / raised */
+  --c-surface-2: 28 29 26; /* #1C1D1A hover / inset */
+  --c-line: 43 44 41; /* #2B2C29 hairline borders */
+  --c-line-strong: 60 61 56; /* #3C3D38 emphasized borders */
+
+  /* Text */
+  --c-ink: 241 241 236; /* #F1F1EC primary  (~16.9:1 on canvas) */
+  --c-secondary: 166 167 158; /* #A6A79E secondary (~7.4:1 on canvas) */
+  --c-muted: 130 131 123; /* #82837B muted/labels (~4.6:1 — non-critical only) */
+
+  /* Single restrained accent: oxidized blood-red, echoes the hand-dyed denim.
+     Used for small non-text signals (status dot, active marker, rule). */
+  --c-accent: 176 80 63; /* #B0503F */
+  --c-accent-soft: 217 142 129; /* #D98E81 accent as text (~6.4:1 on canvas) */
+
+  /* Shape & motion */
+  --radius: 2px;
+  --header-h: 64px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur: 220ms;
+}
+
+@layer base {
+  * {
+    border-color: rgb(var(--c-line));
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: rgb(var(--c-canvas));
+    color: rgb(var(--c-ink));
+    font-feature-settings: "ss01", "cv01";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Headings use the condensed display face; tight, uppercase-friendly. */
+  h1, h2, h3 {
+    font-family: var(--font-display), "Arial Narrow", sans-serif;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background-color: rgb(var(--c-accent) / 0.85);
+    color: rgb(var(--c-ink));
+  }
+
+  /* Visible, consistent keyboard focus everywhere. */
+  :focus-visible {
+    outline: 2px solid rgb(var(--c-ink));
+    outline-offset: 2px;
+    border-radius: 1px;
+  }
+
+  /* Tabular figures for prices & measurements to prevent layout shift. */
+  .nums {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+}
+
+@layer utilities {
+  /* Eyebrow / label style: condensed, spaced, uppercase. */
+  .label {
+    font-family: var(--font-display), sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: 600;
+  }
+
+  /* Faint film grain for the hero only — functional depth, not decoration.
+     Disabled under reduced motion via the block below is unnecessary (static),
+     kept extremely subtle (~4%). */
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+/* Respect users who prefer reduced motion: kill transitions, animations and
+   smooth scrolling globally. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
