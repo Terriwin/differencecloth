@@ -7,9 +7,7 @@ export function Footer() {
 
   return (
     <footer className="border-t border-line bg-surface">
-      {/* Slightly larger left inset than the content grid, so the footer reads
-          intentionally off-line rather than ruler-aligned. */}
-      <div className="mx-auto max-w-content py-14 pl-9 pr-5 md:py-16 md:pl-16 md:pr-8 lg:pl-24 lg:pr-12">
+      <div className="mx-auto max-w-content px-5 py-14 md:px-8 md:py-16 lg:px-12">
         <div className="grid gap-10 md:grid-cols-[1.6fr_1fr]">
           <div>
             <Logo />
