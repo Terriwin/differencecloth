@@ -118,9 +118,9 @@ export default function HomePage() {
             }
           />
         </Container>
-        {/* Wider than the content container so the big images break out of the
-            grid, kept just off the screen edge by a thin gutter. */}
-        <div className="mx-auto mt-12 max-w-[1600px] px-2 md:mt-20 md:px-3 lg:px-5">
+        {/* Full-bleed-ish so the images stay giant on wide screens too; only a
+            thin gutter keeps them off the very edge. */}
+        <div className="mt-12 px-2 md:mt-20 md:px-3 lg:px-5">
           <FeaturedShowcase products={featured} />
         </div>
       </section>
