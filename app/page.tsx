@@ -18,7 +18,7 @@ function Spark() {
       viewBox="0 0 24 24"
       fill="currentColor"
       aria-hidden
-      className="mx-7 h-5 w-5 shrink-0 text-accent md:mx-12 md:h-7 md:w-7"
+      className="mx-7 h-5 w-5 shrink-0 text-muted md:mx-12 md:h-7 md:w-7"
     >
       <path d="M12 0c.7 6.4 5.6 11.3 12 12-6.4.7-11.3 5.6-12 12-.7-6.4-5.6-11.3-12-12C6.4 11.3 11.3 6.4 12 0Z" />
     </svg>
@@ -102,7 +102,7 @@ export default function HomePage() {
       </div>
 
       {/* ---- В наличии: editorial broken grid ---- */}
-      <section id="in-stock" className="scroll-mt-24 py-20 md:py-28">
+      <section id="in-stock" className="scroll-mt-24 overflow-hidden py-20 md:py-28">
         <Container>
           <SectionHeading
             eyebrow="Сейчас"
@@ -117,10 +117,12 @@ export default function HomePage() {
               </Link>
             }
           />
-          <div className="mt-12 md:mt-20">
-            <FeaturedShowcase products={featured} />
-          </div>
         </Container>
+        {/* Wider than the content container so the big images break out of the
+            grid, but kept off the screen edge by a small gutter. */}
+        <div className="mx-auto mt-12 max-w-[1600px] px-6 md:mt-20 md:px-10 lg:px-14">
+          <FeaturedShowcase products={featured} />
+        </div>
       </section>
 
       {/* ---- Отзывы: asymmetric — one large pull-quote + two compact ---- */}

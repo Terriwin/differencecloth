@@ -77,7 +77,7 @@ const config: Config = {
       },
       animation: {
         "fade-up": "fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both",
-        marquee: "marquee 32s linear infinite",
+        marquee: "marquee 60s linear infinite",
       },
     },
   },
