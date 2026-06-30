@@ -9,6 +9,38 @@ import { getFeaturedProducts } from "@/lib/products";
 import { getFeaturedReviews } from "@/lib/reviews";
 import { SITE } from "@/lib/site";
 
+const BAND_WORDS = ["Ручная работа", "DIFFERENCE", "Минск"];
+
+/** A four-point spark used as the marquee separator (instead of a plain dot). */
+function Spark() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden
+      className="mx-7 h-5 w-5 shrink-0 text-accent md:mx-12 md:h-7 md:w-7"
+    >
+      <path d="M12 0c.7 6.4 5.6 11.3 12 12-6.4.7-11.3 5.6-12 12-.7-6.4-5.6-11.3-12-12C6.4 11.3 11.3 6.4 12 0Z" />
+    </svg>
+  );
+}
+
+/** One repeat of the marquee content; rendered twice for a seamless -50% loop. */
+function MarqueeRow() {
+  return (
+    <div className="flex shrink-0 items-center">
+      {BAND_WORDS.map((word, i) => (
+        <div key={i} className="flex items-center">
+          <span className="select-none font-display text-[clamp(2.5rem,11vw,8rem)] font-bold uppercase leading-none tracking-tight text-transparent [-webkit-text-stroke:1px_rgb(var(--c-line-strong))]">
+            {word}
+          </span>
+          <Spark />
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function HomePage() {
   const featured = getFeaturedProducts(4);
   const [leadReview, ...restReviews] = getFeaturedReviews(3);
@@ -19,9 +51,9 @@ export default function HomePage() {
       <section className="grain relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/catalog/krovavye-dzhinsy-1.jpg"
-          alt="«Кровавые джинсы» DIFFERENCE — ручная роспись краской по ткани"
-          className="absolute inset-0 -z-10 h-full w-full object-cover object-[center_30%]"
+          src="/hero.svg"
+          alt=""
+          className="absolute inset-0 -z-10 h-full w-full object-cover"
         />
         <div
           aria-hidden
@@ -63,9 +95,10 @@ export default function HomePage() {
         aria-hidden
         className="overflow-hidden border-y border-line py-5 md:py-7"
       >
-        <p className="-ml-[3vw] select-none whitespace-nowrap font-display text-[clamp(2.5rem,11vw,8rem)] font-bold uppercase leading-none tracking-tight text-transparent [-webkit-text-stroke:1px_rgb(var(--c-line-strong))]">
-          Ручная работа · DIFFERENCE · Минск · Ручная работа · DIFFERENCE · Минск ·
-        </p>
+        <div className="flex w-max animate-marquee whitespace-nowrap motion-reduce:animate-none">
+          <MarqueeRow />
+          <MarqueeRow />
+        </div>
       </div>
 
       {/* ---- В наличии: editorial broken grid ---- */}

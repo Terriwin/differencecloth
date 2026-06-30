@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 2000" width="1600" height="2000" role="img" aria-label="DIFFERENCE — ручная работа">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0.35" y2="1">
+      <stop offset="0" stop-color="#23201b"/>
+      <stop offset="0.55" stop-color="#16140f"/>
+      <stop offset="1" stop-color="#0c0b08"/>
+    </linearGradient>
+    <radialGradient id="v" cx="0.5" cy="0.4" r="0.75">
+      <stop offset="0" stop-color="#2c2820" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#0c0b08" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="2000" fill="url(#g)"/>
+  <rect width="1600" height="2000" fill="url(#v)"/>
+  <g transform="translate(800 860)" fill="none" stroke="#ffffff" stroke-opacity="0.05" stroke-width="16">
+    <path d="M -150 -260 h 150 a 260 260 0 0 1 0 520 h -150 z"/>
+    <path d="M -255 0 h 230"/>
+  </g>
+  <rect x="64" y="64" width="1472" height="1872" fill="none" stroke="#ffffff" stroke-opacity="0.05"/>
+</svg>

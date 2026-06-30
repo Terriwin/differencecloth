@@ -17,10 +17,7 @@ export function SectionHeading({
     <div className={`flex flex-wrap items-end justify-between gap-x-6 gap-y-4 ${className}`}>
       <div>
         {eyebrow && (
-          <p className="label flex items-center gap-2.5 text-[0.7rem] text-secondary">
-            <span aria-hidden className="inline-block h-px w-7 bg-accent" />
-            {eyebrow}
-          </p>
+          <p className="label text-[0.7rem] text-secondary">{eyebrow}</p>
         )}
         <h2 className="mt-3 font-display text-3xl font-bold uppercase tracking-tight text-ink md:text-4xl">
           {title}

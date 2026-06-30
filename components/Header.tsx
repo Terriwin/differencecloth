@@ -9,6 +9,8 @@ import { CurrencySwitcher } from "./CurrencySwitcher";
 import { OrderButton } from "./OrderButton";
 import { MenuIcon, CloseIcon } from "./icons";
 
+const SOLID_AT = 260; // px of scroll over which the bar fades fully solid
+
 function isActive(pathname: string, href: string): boolean {
   if (href.startsWith("/#")) return false; // in-page anchor, never "active"
   return pathname === href;
@@ -18,20 +20,36 @@ export function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  const scrimRef = useRef<HTMLDivElement>(null);
   const closeBtn = useRef<HTMLButtonElement>(null);
 
-  // On the home page the bar is a transparent overlay on top of the full-bleed
-  // hero; it condenses into a solid bar once the user scrolls past the fold.
-  // Inner pages always render the solid bar.
-  const overlay = isHome && !scrolled;
-
+  // The bar's background fades in gradually, tied to scroll position, instead of
+  // snapping solid. On inner pages it's solid from the start. Styles are written
+  // straight to the DOM via refs (no per-frame React re-render).
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const el = headerRef.current;
+    if (!el) return;
+
+    const apply = (p: number) => {
+      el.style.backgroundColor = `rgb(var(--c-canvas) / ${(p * 0.9).toFixed(3)})`;
+      el.style.borderBottomColor = `rgb(var(--c-line) / ${p.toFixed(3)})`;
+      const blur = p > 0.01 ? `blur(${(p * 12).toFixed(1)}px)` : "none";
+      el.style.backdropFilter = blur;
+      el.style.setProperty("-webkit-backdrop-filter", blur);
+      if (scrimRef.current) scrimRef.current.style.opacity = (1 - p).toFixed(3);
+    };
+
+    if (!isHome) {
+      apply(1);
+      return;
+    }
+
+    const onScroll = () => apply(Math.min(window.scrollY / SOLID_AT, 1));
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [isHome]);
 
   // Close the drawer whenever the route changes.
   useEffect(() => {
@@ -58,15 +76,23 @@ export function Header() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ease-out-soft ${
-          overlay
-            ? "bg-transparent"
-            : "border-b border-line bg-canvas/85 backdrop-blur-md"
-        }`}
+        ref={headerRef}
+        className="fixed inset-x-0 top-0 z-50 border-b"
+        style={
+          isHome
+            ? { backgroundColor: "transparent", borderBottomColor: "transparent" }
+            : {
+                backgroundColor: "rgb(var(--c-canvas) / 0.9)",
+                borderBottomColor: "rgb(var(--c-line))",
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
+              }
+        }
       >
-        {/* Legibility scrim behind the overlay nav (only when transparent). */}
-        {overlay && (
+        {/* Legibility scrim behind the overlay nav; fades out as the bar solidifies. */}
+        {isHome && (
           <div
+            ref={scrimRef}
             aria-hidden
             className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-28 bg-gradient-to-b from-canvas/85 via-canvas/40 to-transparent"
           />
@@ -117,7 +143,7 @@ export function Header() {
         </div>
       </header>
 
-      {/* Spacer so fixed bar doesn't cover content on inner pages. Home places
+      {/* Spacer so the fixed bar doesn't cover content on inner pages. Home places
           the full-bleed hero directly under the transparent bar instead. */}
       {!isHome && <div aria-hidden style={{ height: "var(--header-h)" }} />}
 
