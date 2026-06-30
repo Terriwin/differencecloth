@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { PageHeader } from "@/components/PageHeader";
 import { ReviewCard } from "@/components/ReviewCard";
-import { OrderButton } from "@/components/OrderButton";
 import { getAllReviews } from "@/lib/reviews";
 
 export const metadata: Metadata = {
@@ -18,7 +17,7 @@ export default function ReviewsPage() {
       <PageHeader
         eyebrow="Кто уже носит"
         title="Отзывы"
-        lead="Несколько слов от тех, кто уже забрал свою пару."
+        lead="Несколько слов от тех, кто уже совершал у нас заказ."
       />
       <section className="py-12 md:py-16">
         <Container>
@@ -32,13 +31,6 @@ export default function ReviewsPage() {
               </li>
             ))}
           </ul>
-
-          <div className="mt-16 flex flex-col items-start gap-4 border-t border-line pt-10 sm:flex-row sm:items-center sm:justify-between">
-            <p className="max-w-md text-base text-secondary">
-              Хотите такую же? Напишите нам — обсудим крой и роспись под вас.
-            </p>
-            <OrderButton size="lg" />
-          </div>
         </Container>
       </section>
     </>

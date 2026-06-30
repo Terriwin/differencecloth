@@ -11,6 +11,7 @@ export const SITE = {
   heroTitle: "DIFFERENCE",
   heroSlogan:
     "Кастомные джинсы ручной работы. Каждая вещь существует в одном экземпляре.",
+  footerTagline: "Кастомная одежда ручной работы",
   city: "Минск, Беларусь",
   ctaLabel: "Заказать",
 } as const;

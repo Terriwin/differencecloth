@@ -17,7 +17,7 @@ export default function ContactsPage() {
       <PageHeader
         eyebrow="Связаться"
         title="Контакты"
-        lead="Все заказы и вопросы — через Telegram. Отвечаем и подбираем крой лично."
+        lead="Все заказы и вопросы — через Telegram."
       />
 
       <section className="py-12 md:py-16">
@@ -88,10 +88,6 @@ export default function ContactsPage() {
                 );
               })}
             </ul>
-            <p className="mt-6 text-xs text-muted">
-              TikTok, ВКонтакте и Instagram указаны как заглушки — замените на
-              реальные аккаунты в lib/site.ts.
-            </p>
           </div>
         </Container>
       </section>

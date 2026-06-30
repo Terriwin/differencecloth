@@ -14,7 +14,7 @@ export function Footer() {
           <div>
             <Logo />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-secondary">
-              {SITE.heroSlogan}
+              {SITE.footerTagline}
             </p>
             <p className="mt-4 inline-flex items-center gap-2 text-sm text-muted">
               <MapPinIcon className="h-4 w-4" />
@@ -22,7 +22,7 @@ export function Footer() {
             </p>
           </div>
 
-          <div>
+          <div className="md:pl-8 lg:pl-14">
             <h2 className="label text-[0.7rem] text-muted">Соцсети</h2>
             <ul className="mt-4 space-y-2.5">
               {SOCIALS.map((s) => {

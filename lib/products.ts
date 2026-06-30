@@ -9,11 +9,10 @@ import type { Product } from "./types";
 export const PRODUCTS: Product[] = [
   {
     slug: "krovavye-dzhinsy",
-    name: "Кровавые джинсы",
+    name: "Bloody Jeans",
     category: "Джинсы",
     tagline: "Ручная роспись по ткани, единственный экземпляр",
-    description:
-      "Широкие джинсы из плотного хлопка с авторской ручной росписью краской по ткани. Рисунок наносится вручную, поэтому повторить его невозможно — у вас будет ровно одна такая пара.",
+    description: "ОПИСАНИЕ",
     material: "100% хлопок, краска по ткани",
     measurements: [
       { label: "Длина", value: "102 см" },
@@ -33,8 +32,7 @@ export const PRODUCTS: Product[] = [
     name: "Angel tears jeans",
     category: "Джинсы",
     tagline: "Светло-пепельная многослойная бахрома, фактурный верх",
-    description:
-      "Рваная многослойная бахрома ручной работы в светло-пепельном тоне, верх с фактурной сетчатой отделкой. На джинсах 2 потайных карго-кармана. Единственный экземпляр.",
+    description: "ОПИСАНИЕ",
     material: "98% хлопка, 2% эластана",
     measurements: [
       { label: "Длина", value: "103 см" },
@@ -54,8 +52,7 @@ export const PRODUCTS: Product[] = [
     name: "Cursed by hell jeans",
     category: "Джинсы",
     tagline: "Чёрная многослойная бахрома, длинный силуэт",
-    description:
-      "Чёрная рваная многослойная бахрома ручной работы, длинный струящийся силуэт. Единственный экземпляр.",
+    description: "ОПИСАНИЕ",
     material: "98% хлопка, 2% эластана",
     measurements: [
       { label: "Длина", value: "103 см" },
