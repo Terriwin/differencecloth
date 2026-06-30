@@ -35,14 +35,10 @@ function frame({ w, h, top, bottom, name, label, accent = "#B0503F" }) {
 </svg>`;
 }
 
-// slug -> tonal pair (top/bottom). Names match lib/products.ts.
-// Note: angel-tears-jeans / cursed-by-hell-jeans use their own fringe
-// placeholders from gen-catalog-placeholders.mjs (real photos pending).
-const PRODUCTS = [
-  { slug: "krovavye-dzhinsy", name: "Кровавые джинсы", count: 3, top: "#262019", bottom: "#15110d" },
-  { slug: "grafitovye-dzhinsy", name: "Графитовые джинсы", count: 2, top: "#212421", bottom: "#101210" },
-  { slug: "ugolnye-dzhinsy", name: "Угольные джинсы", count: 2, top: "#1a1b18", bottom: "#0c0d0b" },
-];
+// All catalogue products now ship with real photos in /public/catalog, so no
+// product placeholders are generated. Kept for regenerating review avatars (and
+// in case a future placeholder is needed).
+const PRODUCTS = [];
 
 let made = 0;
 for (const p of PRODUCTS) {
@@ -66,9 +62,9 @@ for (const p of PRODUCTS) {
 
 // Review avatars — square, with the author initial.
 const REVIEWS = [
-  { id: "r1", author: "Дмитрий" },
-  { id: "r2", author: "Алина" },
-  { id: "r3", author: "Кирилл" },
+  { id: "r1", author: "женя" },
+  { id: "r2", author: "DO30RIA" },
+  { id: "r3", author: "OdinDvaTvari" },
 ];
 for (const r of REVIEWS) {
   const out = join(PUBLIC, "reviews", `${r.id}.svg`);

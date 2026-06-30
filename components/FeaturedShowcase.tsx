@@ -6,12 +6,12 @@ import { StockBadge } from "./StockBadge";
 import { ArrowRightIcon } from "./icons";
 
 /**
- * Editorial, broken-grid presentation of the in-stock highlights. Images bleed
- * to the viewport edge and alternate sides with differing column widths; the
- * copy column is offset for asymmetry. Mobile-first: on small screens each item
- * collapses to a clean full-width image with the copy beneath it.
+ * Editorial, broken-grid presentation of the in-stock highlights. Images sit
+ * inside the page container (with a margin from the screen edge) and alternate
+ * sides with differing column widths; the copy column is offset for asymmetry.
+ * Mobile-first: on small screens each item is a clean image with copy beneath.
  *
- * This is a full-width block — render it outside the page container.
+ * Render inside the page <Container>.
  */
 export function FeaturedShowcase({ products }: { products: Product[] }) {
   return (
@@ -23,7 +23,7 @@ export function FeaturedShowcase({ products }: { products: Product[] }) {
             key={product.slug}
             className="md:grid md:grid-cols-12 md:items-center md:gap-x-8"
           >
-            {/* Image — bleeds to the nearest viewport edge on desktop */}
+            {/* Image */}
             <Link
               href={`/catalog/${product.slug}`}
               aria-label={product.name}
@@ -39,14 +39,14 @@ export function FeaturedShowcase({ products }: { products: Product[] }) {
                 alt={`${product.name} — ${product.tagline}`}
                 ratio="4 / 5"
                 priority={i === 0}
-                className="border-y border-line transition-colors duration-200 ease-out-soft group-hover:border-line-strong md:border"
+                className="border border-line transition-colors duration-200 ease-out-soft group-hover:border-line-strong"
                 imgClassName="transition-transform duration-[800ms] ease-out-soft group-hover:scale-[1.03]"
               />
             </Link>
 
             {/* Copy */}
             <div
-              className={`mt-6 px-5 md:mt-0 md:px-0 ${
+              className={`mt-6 md:mt-0 ${
                 imageRight
                   ? "md:order-1 md:col-span-4 md:col-start-1 md:pl-8 lg:pl-12"
                   : "md:order-2 md:col-span-4 md:col-start-9 md:pr-8 lg:pr-12 md:text-right"

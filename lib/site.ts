@@ -10,7 +10,7 @@ export const SITE = {
   eyebrow: "Ручная работа · Минск",
   heroTitle: "DIFFERENCE",
   heroSlogan:
-    "Кастомные джинсы и юбки ручной работы. Каждая вещь существует в одном экземпляре.",
+    "Кастомные джинсы ручной работы. Каждая вещь существует в одном экземпляре.",
   city: "Минск, Беларусь",
   ctaLabel: "Заказать",
 } as const;
@@ -22,8 +22,7 @@ export const NAV = [
   { label: "Контакты", href: "/contacts" },
 ] as const;
 
-/** Social + contact links. TikTok/VK/Instagram handles are placeholders for the
- *  prototype — swap for the real accounts before launch. Telegram is real. */
+/** Social + contact links. All real accounts. */
 export const SOCIALS: SocialLink[] = [
   {
     kind: "telegram",
@@ -34,19 +33,19 @@ export const SOCIALS: SocialLink[] = [
   {
     kind: "tiktok",
     label: "TikTok",
-    handle: "@difference",
-    href: "https://www.tiktok.com/@difference",
+    handle: "@difference5055",
+    href: "https://www.tiktok.com/@difference5055",
   },
   {
     kind: "vk",
     label: "ВКонтакте",
-    handle: "difference",
-    href: "https://vk.com/difference",
+    handle: "DIFFERENCE",
+    href: "https://vk.ru/club237020794",
   },
   {
     kind: "instagram",
     label: "Instagram",
-    handle: "@difference",
-    href: "https://www.instagram.com/difference",
+    handle: "@difference5055",
+    href: "https://www.instagram.com/difference5055",
   },
 ];

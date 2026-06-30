@@ -1,13 +1,10 @@
 import type { Product } from "./types";
 
 /**
- * Mock catalogue. This is the single seam between the UI and the data source.
- * Later, replace the array below with queries against MySQL (same `Product`
- * shape) and turn the accessor functions async — pages already `await` nothing
- * synchronous that would block that change.
- *
- * Per the brief, all items are jeans for this prototype; the brand also makes
- * skirts, which can be added as more `Product` entries with no code changes.
+ * Mock catalogue — the single seam between the UI and the data source. Later,
+ * replace the array with MySQL queries (same `Product` shape) and make the
+ * accessors async; the pages don't depend on synchronous access. Every item is
+ * a one-of-a-kind handmade pair of jeans.
  */
 export const PRODUCTS: Product[] = [
   {
@@ -53,26 +50,6 @@ export const PRODUCTS: Product[] = [
     ],
   },
   {
-    slug: "grafitovye-dzhinsy",
-    name: "Графитовые джинсы",
-    category: "Джинсы",
-    tagline: "Глубокий графит, роспись по ткани",
-    description:
-      "Тёмно-графитовые джинсы с плотной авторской росписью. Глубокий, почти угольный тон с матовой фактурой. Шьются под заказ по индивидуальным меркам.",
-    material: "100% хлопок, краска по ткани",
-    measurements: [
-      { label: "Длина", value: "101 см" },
-      { label: "Выход", value: "36 см" },
-      { label: "Полуталия", value: "35 см" },
-    ],
-    prices: { BYN: 190, USD: 63, RUB: 5500 },
-    inStock: false,
-    images: [
-      "/products/grafitovye-dzhinsy-1.svg",
-      "/products/grafitovye-dzhinsy-2.svg",
-    ],
-  },
-  {
     slug: "cursed-by-hell-jeans",
     name: "Cursed by hell jeans",
     category: "Джинсы",
@@ -91,26 +68,6 @@ export const PRODUCTS: Product[] = [
       "/catalog/cursed-by-hell-jeans-1.jpg",
       "/catalog/cursed-by-hell-jeans-2.jpg",
       "/catalog/cursed-by-hell-jeans-3.jpg",
-    ],
-  },
-  {
-    slug: "ugolnye-dzhinsy",
-    name: "Угольные джинсы",
-    category: "Джинсы",
-    tagline: "Самый тёмный тон линейки",
-    description:
-      "Угольно-чёрные джинсы с ручной росписью по краю. Самый тёмный оттенок в линейке — почти без отражений, с матовой, «обугленной» фактурой.",
-    material: "100% хлопок, краска по ткани",
-    measurements: [
-      { label: "Длина", value: "100 см" },
-      { label: "Выход", value: "36 см" },
-      { label: "Полуталия", value: "34 см" },
-    ],
-    prices: { BYN: 200, USD: 67, RUB: 5800 },
-    inStock: false,
-    images: [
-      "/products/ugolnye-dzhinsy-1.svg",
-      "/products/ugolnye-dzhinsy-2.svg",
     ],
   },
 ];

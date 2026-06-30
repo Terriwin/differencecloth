@@ -1,26 +1,23 @@
 import type { Review } from "./types";
 
-/** Mock reviews. Same data-seam pattern as products.ts. */
+/** Real customer reviews forwarded to the brand's Telegram channel. */
 export const REVIEWS: Review[] = [
   {
     id: "r1",
-    author: "Дмитрий",
-    product: "Кровавые джинсы",
-    text: "Получил джинсы, круто получилось, очень понравилось, спасибо.",
+    author: "женя",
+    text: "привет, заказ забрал, все заебись очень крутые джинсы!",
     photo: "/reviews/r1.svg",
   },
   {
     id: "r2",
-    author: "Алина",
-    product: "Cursed by hell jeans",
-    text: "Сидят идеально, ткань плотная, цвет вживую ещё лучше, чем на фото. Шили под мои мерки — попали точно.",
+    author: "DO30RIA",
+    text: "Еба штаны имбовые, теперь знаю где заказывать)",
     photo: "/reviews/r2.svg",
   },
   {
     id: "r3",
-    author: "Кирилл",
-    product: "Angel tears jeans",
-    text: "Заказывал из другого города, всё объяснили по меркам, отправили быстро. Носятся уже месяц — как новые.",
+    author: "OdinDvaTvari",
+    text: "Хорошая сумка, ждал не долго, очень приятный парень в общении.",
     photo: "/reviews/r3.svg",
   },
 ];

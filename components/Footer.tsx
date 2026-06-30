@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { NAV, SITE, SOCIALS } from "@/lib/site";
+import { SITE, SOCIALS } from "@/lib/site";
 import { Logo } from "./Logo";
 import { SOCIAL_ICONS, MapPinIcon } from "./icons";
 
@@ -9,7 +8,7 @@ export function Footer() {
   return (
     <footer className="border-t border-line bg-surface">
       <div className="mx-auto max-w-content px-5 py-14 md:px-8 md:py-16 lg:px-12">
-        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
+        <div className="grid gap-10 md:grid-cols-[1.6fr_1fr]">
           <div>
             <Logo />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-secondary">
@@ -20,22 +19,6 @@ export function Footer() {
               {SITE.city}
             </p>
           </div>
-
-          <nav aria-label="Навигация в подвале">
-            <h2 className="label text-[0.7rem] text-muted">Разделы</h2>
-            <ul className="mt-4 space-y-2.5">
-              {NAV.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-sm text-secondary transition-colors duration-200 hover:text-ink"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
 
           <div>
             <h2 className="label text-[0.7rem] text-muted">Соцсети</h2>

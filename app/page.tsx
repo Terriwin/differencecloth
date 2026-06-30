@@ -102,7 +102,7 @@ export default function HomePage() {
       </div>
 
       {/* ---- В наличии: editorial broken grid ---- */}
-      <section id="in-stock" className="scroll-mt-24 overflow-hidden py-20 md:py-28">
+      <section id="in-stock" className="scroll-mt-24 py-20 md:py-28">
         <Container>
           <SectionHeading
             eyebrow="Сейчас"
@@ -117,10 +117,10 @@ export default function HomePage() {
               </Link>
             }
           />
+          <div className="mt-12 md:mt-20">
+            <FeaturedShowcase products={featured} />
+          </div>
         </Container>
-        <div className="mt-12 md:mt-20">
-          <FeaturedShowcase products={featured} />
-        </div>
       </section>
 
       {/* ---- Отзывы: asymmetric — one large pull-quote + two compact ---- */}

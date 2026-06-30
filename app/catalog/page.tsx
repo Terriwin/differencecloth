@@ -23,7 +23,7 @@ export default function CatalogPage({
       <PageHeader
         eyebrow="Коллекция"
         title="Каталог"
-        lead="Кастомные джинсы ручной работы. Шьём под ваши мерки, каждая пара существует в одном экземпляре."
+        lead="Кастомные джинсы ручной работы. Каждая пара существует в одном экземпляре."
       />
       <section className="py-12 md:py-16">
         <Container>
