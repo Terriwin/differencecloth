@@ -1,4 +1,5 @@
 import { SITE, SOCIALS } from "@/lib/site";
+import { Container } from "./Container";
 import { Logo } from "./Logo";
 import { SOCIAL_ICONS, MapPinIcon } from "./icons";
 
@@ -7,9 +8,10 @@ export function Footer() {
 
   return (
     <footer className="border-t border-line bg-surface">
-      {/* Content box sits symmetrically narrower than the content grid above,
-          so the footer reads intentionally inset rather than ruler-aligned. */}
-      <div className="mx-auto max-w-[1090px] px-5 py-14 md:px-8 md:py-16 lg:px-12">
+      {/* Wide frame — same gutter as the product grids and (at typical
+          viewport widths) the standard content sections above, so the
+          footer edges line up rather than reading as inset. */}
+      <Container wide className="py-14 md:py-16">
         <div className="grid gap-10 md:grid-cols-[1.6fr_1fr]">
           <div>
             <Logo />
@@ -52,7 +54,7 @@ export function Footer() {
           </p>
           <p>Оплата и заказ — через Telegram.</p>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }
