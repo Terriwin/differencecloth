@@ -22,8 +22,6 @@ export interface Product {
   name: string;
   /** Product family, e.g. "Джинсы". */
   category: string;
-  /** One-line hook shown on cards / hero. */
-  tagline: string;
   description: string;
   material: string;
   measurements: Measurement[];

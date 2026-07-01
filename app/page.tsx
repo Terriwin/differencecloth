@@ -1,45 +1,13 @@
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
-import { FeaturedShowcase } from "@/components/FeaturedShowcase";
+import { ProductCard } from "@/components/ProductCard";
 import { ReviewCard } from "@/components/ReviewCard";
 import { OrderButton } from "@/components/OrderButton";
 import { ArrowRightIcon } from "@/components/icons";
 import { getFeaturedProducts } from "@/lib/products";
 import { getFeaturedReviews } from "@/lib/reviews";
 import { SITE } from "@/lib/site";
-
-const BAND_WORDS = ["Ручная работа", "DIFFERENCE", "Минск"];
-
-/** A four-point spark used as the marquee separator (instead of a plain dot). */
-function Spark() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden
-      className="mx-7 h-5 w-5 shrink-0 text-line-strong md:mx-12 md:h-7 md:w-7"
-    >
-      <path d="M12 0c.7 6.4 5.6 11.3 12 12-6.4.7-11.3 5.6-12 12-.7-6.4-5.6-11.3-12-12C6.4 11.3 11.3 6.4 12 0Z" />
-    </svg>
-  );
-}
-
-/** One repeat of the marquee content; rendered twice for a seamless -50% loop. */
-function MarqueeRow() {
-  return (
-    <div className="flex shrink-0 items-center">
-      {BAND_WORDS.map((word, i) => (
-        <div key={i} className="flex items-center">
-          <span className="select-none font-display text-[clamp(2.5rem,11vw,8rem)] font-bold uppercase leading-none tracking-[0.06em] text-transparent [-webkit-text-stroke:1px_rgb(var(--c-line-strong))]">
-            {word}
-          </span>
-          <Spark />
-        </div>
-      ))}
-    </div>
-  );
-}
 
 export default function HomePage() {
   const featured = getFeaturedProducts(4);
@@ -90,19 +58,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ---- Outlined wordmark band: a graphic divider, not a slab ---- */}
-      <div
-        aria-hidden
-        className="overflow-hidden border-y border-line py-5 md:py-7"
-      >
-        <div className="flex w-max animate-marquee whitespace-nowrap motion-reduce:animate-none">
-          <MarqueeRow />
-          <MarqueeRow />
-        </div>
-      </div>
-
-      {/* ---- В наличии: editorial broken grid ---- */}
-      <section id="in-stock" className="scroll-mt-24 overflow-hidden py-20 md:py-28">
+      {/* ---- В наличии: compact grid, 3 per row from mobile up ---- */}
+      <section id="in-stock" className="scroll-mt-24 py-20 md:py-28">
         <Container>
           <SectionHeading
             eyebrow="Сейчас"
@@ -117,12 +74,17 @@ export default function HomePage() {
               </Link>
             }
           />
+          <ul
+            role="list"
+            className="mt-8 grid grid-cols-3 gap-x-3 gap-y-8 md:mt-12 md:gap-x-6 md:gap-y-10"
+          >
+            {featured.map((product, i) => (
+              <li key={product.slug}>
+                <ProductCard product={product} priority={i < 3} />
+              </li>
+            ))}
+          </ul>
         </Container>
-        {/* Full-bleed-ish so the images stay giant on wide screens too; only a
-            thin gutter keeps them off the very edge. */}
-        <div className="mt-12 px-4 md:mt-20 md:px-6 lg:px-10">
-          <FeaturedShowcase products={featured} />
-        </div>
       </section>
 
       {/* ---- Отзывы: asymmetric — one large pull-quote + two compact ---- */}

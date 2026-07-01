@@ -23,7 +23,7 @@ export function generateMetadata({
   if (!product) return { title: "Товар не найден" };
   return {
     title: product.name,
-    description: `${product.name} — ${product.tagline}. ${product.material}.`,
+    description: `${product.name} — ${product.description}`,
   };
 }
 
@@ -62,11 +62,8 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
             <h1 className="mt-3 font-display text-4xl font-bold uppercase leading-[0.95] tracking-tight text-ink md:text-5xl">
               {product.name}
             </h1>
-            <p className="mt-4 text-base leading-relaxed text-secondary">
-              {product.tagline}
-            </p>
 
-            <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
               <Price
                 prices={product.prices}
                 className="font-display text-3xl font-bold text-ink"
