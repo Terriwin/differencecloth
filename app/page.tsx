@@ -58,12 +58,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ---- В наличии: shows every in-stock item. The grid uses the wide
-           frame (own width, not the standard Container used by the heading
-           above) so 5 full-size cards fit per row on desktop; still 3 on
-           mobile. Independent of the reviews section's layout below. ---- */}
-      <section id="in-stock" className="scroll-mt-24 py-20 md:py-28">
-        <Container>
+      {/* ---- В наличии: shows every in-stock item. Heading + grid both sit in
+           the wide frame (own width, wider than the standard Container used
+           by nav/hero text) so 5 full-size cards fit per row on desktop; still
+           3 on mobile. Independent of the reviews section's layout below. ---- */}
+      <section id="in-stock" className="scroll-mt-24 border-t border-line py-20 md:py-28">
+        <Container wide>
           <SectionHeading
             eyebrow="Сейчас"
             title="В наличии"
@@ -77,8 +77,6 @@ export default function HomePage() {
               </Link>
             }
           />
-        </Container>
-        <Container wide>
           <ul
             role="list"
             className="mt-8 grid grid-cols-3 gap-x-3 gap-y-8 md:mt-12 md:gap-x-6 md:gap-y-10 lg:grid-cols-5 lg:gap-x-8 lg:gap-y-14"
@@ -92,9 +90,11 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* ---- Отзывы: asymmetric — one large pull-quote + two compact ---- */}
+      {/* ---- Отзывы: asymmetric — one large pull-quote + two compact. Same
+           wide frame as the В наличии grid above, for a consistent stretched
+           look across the page. ---- */}
       <section className="border-t border-line bg-surface/30 py-20 md:py-28">
-        <Container>
+        <Container wide>
           <SectionHeading
             eyebrow="Кто уже носит"
             title="Отзывы"
@@ -109,10 +109,10 @@ export default function HomePage() {
             }
           />
 
-          <div className="mt-10 md:mt-14 md:grid md:grid-cols-12 md:gap-8">
+          <div className="mt-10 md:mt-14 md:grid md:grid-cols-12 md:gap-8 lg:gap-10">
             {leadReview && (
-              <figure className="relative overflow-hidden rounded-[var(--radius)] border border-line bg-surface p-8 md:col-span-7 md:p-12">
-                <blockquote className="relative text-xl leading-relaxed text-ink md:text-2xl">
+              <figure className="relative overflow-hidden rounded-[var(--radius)] border border-line bg-surface p-8 md:col-span-7 md:p-12 xl:p-16">
+                <blockquote className="relative text-xl leading-relaxed text-ink md:text-2xl xl:text-3xl">
                   «{leadReview.text}»
                 </blockquote>
                 <figcaption className="relative mt-8 flex items-center gap-3 border-t border-line pt-6">

@@ -34,7 +34,10 @@ export function CatalogGrid({
 
   return (
     <div>
-      <Container>
+      {/* Wide frame throughout — the count/toggle row lines up with the grid
+          below it, both wider than the standard content width used by the
+          page header above. */}
+      <Container wide>
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-line pb-5">
           <p className="text-sm text-secondary">
             <span className="nums text-ink">{visible.length}</span>{" "}
@@ -67,17 +70,8 @@ export function CatalogGrid({
             </span>
           </button>
         </div>
-        {visible.length === 0 && (
-          <p className="mt-16 text-center text-secondary">
-            Сейчас нет моделей в наличии. Напишите нам — отшиваем под заказ.
-          </p>
-        )}
-      </Container>
 
-      {/* Wide frame, independent of the standard content width above, so 5
-          full-size cards fit per row on desktop; still 3 on mobile. */}
-      {visible.length > 0 && (
-        <Container wide>
+        {visible.length > 0 ? (
           <ul
             role="list"
             className="mt-8 grid grid-cols-3 gap-x-3 gap-y-8 md:gap-x-6 md:gap-y-10 lg:grid-cols-5 lg:gap-x-8 lg:gap-y-14"
@@ -88,8 +82,12 @@ export function CatalogGrid({
               </li>
             ))}
           </ul>
-        </Container>
-      )}
+        ) : (
+          <p className="mt-16 text-center text-secondary">
+            Сейчас нет моделей в наличии. Напишите нам — отшиваем под заказ.
+          </p>
+        )}
+      </Container>
     </div>
   );
 }
