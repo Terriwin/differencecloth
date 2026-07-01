@@ -31,7 +31,7 @@ function MarqueeRow() {
     <div className="flex shrink-0 items-center">
       {BAND_WORDS.map((word, i) => (
         <div key={i} className="flex items-center">
-          <span className="select-none font-display text-[clamp(2.5rem,11vw,8rem)] font-bold uppercase leading-none tracking-tight text-transparent [-webkit-text-stroke:1px_rgb(var(--c-line-strong))]">
+          <span className="select-none font-display text-[clamp(2.5rem,11vw,8rem)] font-bold uppercase leading-none tracking-[0.06em] text-transparent [-webkit-text-stroke:1px_rgb(var(--c-line-strong))]">
             {word}
           </span>
           <Spark />
@@ -145,12 +145,6 @@ export default function HomePage() {
           <div className="mt-10 md:mt-14 md:grid md:grid-cols-12 md:gap-8">
             {leadReview && (
               <figure className="relative overflow-hidden rounded-[var(--radius)] border border-line bg-surface p-8 md:col-span-7 md:p-12">
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute -right-2 -top-10 select-none font-display text-[12rem] leading-none text-accent/15"
-                >
-                  &rdquo;
-                </span>
                 <blockquote className="relative text-xl leading-relaxed text-ink md:text-2xl">
                   «{leadReview.text}»
                 </blockquote>
