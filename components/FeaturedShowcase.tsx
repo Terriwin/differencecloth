@@ -52,13 +52,9 @@ export function FeaturedShowcase({ products }: { products: Product[] }) {
                   : "md:order-2 md:col-span-4 md:col-start-9 md:pr-8 lg:pr-12 md:text-right"
               }`}
             >
-              <span className="label nums block text-[0.7rem] text-muted">
-                {String(i + 1).padStart(2, "0")} / {String(products.length).padStart(2, "0")}
-              </span>
-
               <Link
                 href={`/catalog/${product.slug}`}
-                className="mt-3 inline-block rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
+                className="inline-block rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
               >
                 <h3 className="font-display text-3xl font-bold uppercase leading-[0.95] tracking-tight text-ink transition-colors duration-200 hover:text-secondary md:text-4xl lg:text-5xl">
                   {product.name}

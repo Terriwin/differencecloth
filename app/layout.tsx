@@ -24,11 +24,11 @@ const body = Golos_Text({
 
 export const metadata: Metadata = {
   title: {
-    default: `${SITE.brand} — кастомные джинсы ручной работы, Минск`,
+    default: `${SITE.brand} — кастомная одежда ручной работы, Минск`,
     template: `%s · ${SITE.brand}`,
   },
   description:
-    "DIFFERENCE — кастомные джинсы ручной работы из Минска. Каждая вещь в одном экземпляре. Заказ через Telegram.",
+    "DIFFERENCE — кастомная одежда ручной работы из Минска. Каждая вещь в одном экземпляре. Заказ через Telegram.",
 };
 
 export const viewport: Viewport = {
