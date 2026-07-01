@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Container } from "@/components/Container";
 import { PageHeader } from "@/components/PageHeader";
 import { CatalogGrid } from "@/components/CatalogGrid";
 import { getAllProducts } from "@/lib/products";
@@ -26,12 +25,10 @@ export default function CatalogPage({
         lead="Кастомная одежда ручной работы. Каждая вещь существует в одном экземпляре."
       />
       <section className="py-12 md:py-16">
-        <Container>
-          <CatalogGrid
-            products={products}
-            initialInStockOnly={initialInStockOnly}
-          />
-        </Container>
+        <CatalogGrid
+          products={products}
+          initialInStockOnly={initialInStockOnly}
+        />
       </section>
     </>
   );

@@ -58,9 +58,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ---- В наличии: shows every in-stock item. Its column count is its own
-           independent scale (3 → 4 → 5 → 6 as the viewport widens) — not tied
-           to the reviews section's 12-column layout below. ---- */}
+      {/* ---- В наличии: shows every in-stock item. The grid uses the wide
+           frame (own width, not the standard Container used by the heading
+           above) so 5 full-size cards fit per row on desktop; still 3 on
+           mobile. Independent of the reviews section's layout below. ---- */}
       <section id="in-stock" className="scroll-mt-24 py-20 md:py-28">
         <Container>
           <SectionHeading
@@ -76,9 +77,11 @@ export default function HomePage() {
               </Link>
             }
           />
+        </Container>
+        <Container wide>
           <ul
             role="list"
-            className="mt-8 grid grid-cols-3 gap-x-3 gap-y-8 md:mt-12 md:grid-cols-4 md:gap-x-6 md:gap-y-10 lg:grid-cols-5 xl:grid-cols-6"
+            className="mt-8 grid grid-cols-3 gap-x-3 gap-y-8 md:mt-12 md:gap-x-6 md:gap-y-10 lg:grid-cols-5 lg:gap-x-8 lg:gap-y-14"
           >
             {inStock.map((product, i) => (
               <li key={product.slug}>

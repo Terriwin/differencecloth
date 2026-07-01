@@ -61,6 +61,10 @@ const config: Config = {
       },
       maxWidth: {
         content: "1200px",
+        /** Wider frame used only by the product grids (home + catalog) so they
+         *  can show more full-size cards per row on large screens, independent
+         *  of the standard content width used by headings/text/nav. */
+        wide: "1900px",
       },
       transitionTimingFunction: {
         "out-soft": "cubic-bezier(0.22, 1, 0.36, 1)",
