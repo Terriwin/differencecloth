@@ -14,8 +14,11 @@ const SYMBOL: Record<CurrencyCode, string> = {
 
 const nf = new Intl.NumberFormat("ru-RU");
 
-/** Format an amount in the given currency, e.g. formatPrice(5200, "RUB") -> "5 200 ₽". */
+/** Format an amount in the given currency, e.g. formatPrice(5200, "RUB") -> "5 200 ₽".
+ *  A price of exactly 0 is never real (nothing is sold for free) — treated as
+ *  "not set yet" and rendered as a dash, e.g. for placeholder/draft products. */
 export function formatPrice(amount: number, code: CurrencyCode): string {
+  if (amount === 0) return "—";
   return `${nf.format(amount)} ${SYMBOL[code]}`;
 }
 

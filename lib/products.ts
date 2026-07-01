@@ -6,7 +6,7 @@ import type { Product } from "./types";
  * accessors async; the pages don't depend on synchronous access. Every item is
  * a one-of-a-kind handmade pair of jeans.
  */
-export const PRODUCTS: Product[] = [
+const REAL_PRODUCTS: Product[] = [
   {
     slug: "krovavye-dzhinsy",
     name: "Bloody Jeans",
@@ -68,6 +68,30 @@ export const PRODUCTS: Product[] = [
     ],
   },
 ];
+
+/**
+ * Temporary blank placeholders (plain black image, no copy) — added only to
+ * preview how the 3-column grid behaves with more in-stock items. Remove once
+ * the grid check is done.
+ */
+const PLACEHOLDER_COUNT = 6;
+const PLACEHOLDERS: Product[] = Array.from({ length: PLACEHOLDER_COUNT }, (_, i) => ({
+  slug: `placeholder-${i + 1}`,
+  name: "NAME",
+  category: "—",
+  description: "DESCRIPTION",
+  material: "—",
+  measurements: [
+    { label: "Длина", value: "—" },
+    { label: "Выход", value: "—" },
+    { label: "Полуталия", value: "—" },
+  ],
+  prices: { BYN: 0, USD: 0, RUB: 0 },
+  inStock: true,
+  images: ["/catalog/placeholder-empty.svg"],
+}));
+
+export const PRODUCTS: Product[] = [...REAL_PRODUCTS, ...PLACEHOLDERS];
 
 export function getAllProducts(): Product[] {
   return PRODUCTS;
