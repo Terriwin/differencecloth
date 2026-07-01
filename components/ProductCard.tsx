@@ -4,13 +4,18 @@ import { ProductImage } from "./ProductImage";
 import { Price } from "./Price";
 import { StockBadge } from "./StockBadge";
 
-/** Catalogue tile: cover, name, price (current currency), availability badge. */
+/** Catalogue tile: cover, name, price (current currency), availability badge.
+ *  The badge is only useful where sold-out items can appear alongside in-stock
+ *  ones (the catalogue); pass showStockBadge={false} for lists that are
+ *  guaranteed all in-stock (e.g. the home page), where it's redundant. */
 export function ProductCard({
   product,
   priority = false,
+  showStockBadge = true,
 }: {
   product: Product;
   priority?: boolean;
+  showStockBadge?: boolean;
 }) {
   return (
     <Link
@@ -36,9 +41,11 @@ export function ProductCard({
         />
       </div>
 
-      <div className="mt-1.5 md:mt-2.5">
-        <StockBadge inStock={product.inStock} />
-      </div>
+      {showStockBadge && (
+        <div className="mt-1.5 md:mt-2.5">
+          <StockBadge inStock={product.inStock} />
+        </div>
+      )}
     </Link>
   );
 }

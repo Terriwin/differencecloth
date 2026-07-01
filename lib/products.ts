@@ -101,11 +101,7 @@ export function getProductBySlug(slug: string): Product | undefined {
   return PRODUCTS.find((p) => p.slug === slug);
 }
 
+/** Used by the home "В наличии" block — shows every in-stock item, not a subset. */
 export function getInStockProducts(): Product[] {
   return PRODUCTS.filter((p) => p.inStock);
-}
-
-/** Items featured in the home "В наличии" block. */
-export function getFeaturedProducts(limit = 4): Product[] {
-  return getInStockProducts().slice(0, limit);
 }

@@ -5,12 +5,12 @@ import { ProductCard } from "@/components/ProductCard";
 import { ReviewCard } from "@/components/ReviewCard";
 import { OrderButton } from "@/components/OrderButton";
 import { ArrowRightIcon } from "@/components/icons";
-import { getFeaturedProducts } from "@/lib/products";
+import { getInStockProducts } from "@/lib/products";
 import { getFeaturedReviews } from "@/lib/reviews";
 import { SITE } from "@/lib/site";
 
 export default function HomePage() {
-  const featured = getFeaturedProducts(4);
+  const inStock = getInStockProducts();
   const [leadReview, ...restReviews] = getFeaturedReviews(3);
 
   return (
@@ -58,7 +58,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ---- В наличии: compact grid, 3 per row from mobile up ---- */}
+      {/* ---- В наличии: shows every in-stock item. Its column count is its own
+           independent scale (3 → 4 → 5 → 6 as the viewport widens) — not tied
+           to the reviews section's 12-column layout below. ---- */}
       <section id="in-stock" className="scroll-mt-24 py-20 md:py-28">
         <Container>
           <SectionHeading
@@ -76,11 +78,11 @@ export default function HomePage() {
           />
           <ul
             role="list"
-            className="mt-8 grid grid-cols-3 gap-x-3 gap-y-8 md:mt-12 md:gap-x-6 md:gap-y-10"
+            className="mt-8 grid grid-cols-3 gap-x-3 gap-y-8 md:mt-12 md:grid-cols-4 md:gap-x-6 md:gap-y-10 lg:grid-cols-5 xl:grid-cols-6"
           >
-            {featured.map((product, i) => (
+            {inStock.map((product, i) => (
               <li key={product.slug}>
-                <ProductCard product={product} priority={i < 3} />
+                <ProductCard product={product} priority={i < 3} showStockBadge={false} />
               </li>
             ))}
           </ul>
